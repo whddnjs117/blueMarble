@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="/puzzle/scripts/jquery-3.4.1.min.js"></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- 주사위돌리는 js파일 -->
+<script src="/marble/js/marble.js"></script>
+
+<script src="/marble/js/marble.map.js"></script>
+<style>
+	span{ 
+		border: solid 1px;
+		border-color: red;
+		display: inline-block;
+		position: relative;
+		vertical-align: middle;
+		padding: 20px;
+		}
+	.corner{
+		width: 135px;
+	}
+	.up{
+		width: 74px;
+		height: 138px;
+	}
+	.side{
+		width: 135px;
+		height: 74px;
+	}
+	.space{
+		height:74px;
+		width:666px;
+		border: none !important;
+		background-color: rgba( 0, 0, 0, 0.5 );
+	}
+	.player{
+		heigth:30px;
+		width:30px;
+	}
+</style>
+
+<body class="container" style="background:lightblue;">
+<h5>
+	주사위 값 : <input id="dice" type="text"> 이동 지점 : <input id="point" type="text">
+</h5>
+<div style="background: url(/marble/image/브루마블.jpg); width: 960px; height: 958px; padding: 10px;">
+	<div style="height:138px;">
+		<span class="corner" style="height: 138px;" id="p1"></span><!-- 공백제거
+		--><span class="up" id="p2"></span><!-- 공백제거
+		--><span class="up" id="p3"></span><!-- 공백제거
+		--><span class="up" id="p4"></span><!-- 공백제거
+		--><span class="up" id="p5"></span><!-- 공백제거
+		--><span class="up" id="p6"></span><!-- 공백제거
+		--><span class="up" id="p7"></span><!-- 공백제거
+		--><span class="up" id="p8"></span><!-- 공백제거
+		--><span class="up" id="p9"></span><!-- 공백제거
+		--><span class="up" id="p10"></span><!-- 공백제거
+		--><span class="corner" style="height: 138px;"id="p11"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p40"></span><!-- 공백제거 
+		--><span class="space" style="text-align: center;"><span class="space" id = "title"style="text-align: center; color: white; font-size: large; font-weight: 700; width:500px;">게임을 플레이할 사람수를 정하세요(2~4명)</span></span><!-- 공백제거 
+		--><span class="side" id="p12"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p39"></span><!-- 공백제거 
+		--><span class="space" style="text-align: center;">
+			<button type="button" class="playerMembers btn btn-primary btn-lg" value="2">2명</button>
+			<button type="button" class="playerMembers btn btn-primary btn-lg" value="3">3명</button>
+			<button type="button" class="playerMembers btn btn-primary btn-lg" value="4">4명</button>
+		</span><!-- 공백제거 
+		--><span class="side" id="p13"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p38"></span><!-- 공백제거 
+		--><span class="space"></span><!-- 공백제거 
+		--><span class="side" id="p14"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p37"></span><!-- 공백제거 
+		--><span class="space"></span><!-- 공백제거 
+		--><span class="side" id="p15"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p36"></span><!-- 공백제거 
+		--><span class="space" style="width:333px; border: none !important; text-align: right; padding: 0%;"><input type="image" id="onedice" src="/marble/dice/dice1.jpg" style="hegiht:50px; width:50px;"></span><!-- 공백제거
+		--><span class="space" style="width:333px; border: none !important; padding: 0%;"><input type="image" id="twodice" src="/marble/dice/dice1.jpg" style="hegiht:50px; width:50px;"></span><!-- 공백제거 
+		--><span class="side" id="p16"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p35"></span><!-- 공백제거 
+		--><span class="space"></span><!-- 공백제거 
+		--><span class="side" id="p17"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p34"></span><!-- 공백제거 
+		--><span class="space"></span><!-- 공백제거 
+		--><span class="side" id="p18"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p33"></span><!-- 공백제거 
+		--><span class="space"></span><!-- 공백제거 
+		--><span class="side" id="p19"></span>
+	</div>
+	<div style="height:74px;">
+		<span class="side" id="p32"></span><!-- 공백제거 
+		--><span class="space" style="text-align: right;"><input id="play" type="button" class="btn btn-success"value="주사위 play"></span><!-- 공백제거 
+		--><span class="side" id="p20"></span>
+	</div>
+	<div style="height:138px;">
+		<span class="corner" style="height: 138px;" id="p31"></span><!-- 공백제거
+		--><span class="up" id="p30"></span><!-- 공백제거
+		--><span class="up" id="p29"></span><!-- 공백제거
+		--><span class="up" id="p28"></span><!-- 공백제거
+		--><span class="up" id="p27"></span><!-- 공백제거
+		--><span class="up" id="p26"></span><!-- 공백제거
+		--><span class="up" id="p25"></span><!-- 공백제거
+		--><span class="up" id="p24"></span><!-- 공백제거
+		--><span class="up" id="p23"></span><!-- 공백제거
+		--><span class="up" id="p22"></span><!-- 공백제거
+		--><span class="corner" style="height: 138px;" id="p21">
+			<input type="image" src="/marble/image/player1.png" class="player player1">
+			<input type="image" src="/marble/image/player2.png" class="player player2">
+			<input type="image" src="/marble/image/player3.png" class="player player3">
+			<input type="image" src="/marble/image/player4.png" class="player player4">
+		</span>
+	</div>
+</div>
+</body>
+</html>
