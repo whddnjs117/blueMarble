@@ -50,13 +50,18 @@
 		heigth:30px;
 		width:30px;
 	}
+	.playerBoard {
+		width:230px;
+		height:400px;
+		background-color: rgba( 242, 255, 157, 0.5 );
+	}
 </style>
 
 <body class="container" style="background:lightblue;">
-<h5>
+<h5 style="text-align: center;">
 	주사위 값 : <input id="dice" type="text"> 이동 지점 : <input id="point" type="text">
 </h5>
-<div style="background: url(/marble/image/브루마블.jpg); width: 960px; height: 958px; padding: 10px;">
+<div style="background: url(/marble/image/브루마블.jpg); width: 960px; height: 958px; padding: 10px; margin:0 auto;">
 	<div style="height:138px;">
 		<span class="corner" style="height: 138px;" id="p1"></span><!-- 공백제거
 		--><span class="up" id="p2"></span><!-- 공백제거
@@ -138,6 +143,13 @@
 			<input type="image" src="/marble/image/player4.png" class="player player4">
 		</span>
 	</div>
+</div>
+<br>
+<div style="text-align: center; width: 100%;">
+	<span class="playerBoard">1플레이어</span><!-- 공백제거
+	--><span class="playerBoard">2플레이어</span><!-- 공백제거
+	--><span class="playerBoard">3플레이어</span><!-- 공백제거
+	--><span class="playerBoard">4플레이어</span>
 </div>
 </body>
 </html>
