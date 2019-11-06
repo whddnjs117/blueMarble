@@ -120,10 +120,10 @@ window.addEventListener("load",function() {
 			playCount=1;
 		}
 		let dice3 = Math.floor((Math.random() * 3) + 1);
-		let dice1 = 4;
+		let dice1 = 2;
 		$("#onedice").attr("src","/marble/dice/dice"+dice1+".jpg")
 		let dice4 = Math.floor((Math.random() * 3) + 1);
-		let dice2 = 6;
+		let dice2 = 2;
 		$("#twodice").attr("src","/marble/dice/dice"+dice2+".jpg")
 		$("#onedice").show();
 		$("#twodice").show();

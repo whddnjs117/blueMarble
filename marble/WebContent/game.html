@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 아이콘을 사용을 위한 CDN 적용 -->
+<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script> -->
+<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script> -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <script src="/puzzle/scripts/jquery-3.4.1.min.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -58,6 +62,51 @@
 </style>
 
 <body class="container" style="background:lightblue;">
+<!-- 건물을 구입하는 알림창(modal) -->
+<!-- 건물 구입 및 통행료 부과 창 -->
+<div class="modal fade in_middle" id="landConfirm" role="dialog" >
+	<div class="modal-dialog modal-lg">	<!-- 알림 창 구성  -->	    
+	<!-- 대지 통행료 및 대지 구입 질문 창 내용  -->
+		<div class="modal-content" align="center">
+	  		<div class="modal-header" style="padding:35px 50px;">		         	
+	  		<h2><b id="landName">땅 구매</b></h2>
+			</div>
+			<div class="modal-body" style="padding:40px 50px;">
+				<form role="form">
+					<div class="form-group" >
+					<h3>현재 보유 금액은 <b class="text-success" id="remainMoney"></b>만원 입니다.</h3>
+						<table class="table table-hover" style="width:50%">
+							<tr>
+								<td><h5><i class='fas fa-flag'></i> 대지</h5></td>
+								<td><button type="button" class="btn btn-lg btn-block btn-success" id="buyLand"><b id="landPrice"></b> 만원</button> </td>
+							</tr>
+							<tr>
+								<td><h5><i class='fas fa-home'></i> 별장1</h5></td>
+								<td><button type="button" class="btn btn-lg btn-block btn-danger" id="buyHouse1"><b id="house1Price"></b> 만원</button></td>
+							</tr>
+							<tr>
+								<td><h5><i class='fas fa-home'></i> 별장2</h5></td>
+								<td><button type="button" class="btn btn-lg btn-block btn-danger" id="buyHouse2"><b id="house2Price"></b> 만원</button></td>
+							</tr>
+							<tr>
+								<td><h5><i class='fas fa-building'></i> 빌딩</h5></td>
+								<td><button type="button" class="btn btn-lg btn-block btn-warning" id="buyBuilding"><b id="buildingPrice"></b> 만원</button></td>
+							</tr>
+							<tr>
+								<td><h5><i class='fas fa-synagogue'></i> 호텔</h5></td>
+								<td><button type="button" class="btn btn-lg btn-block btn-primary" id="buyHotel"><b id="hotelPrice"></b> 만원</button></td>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer" id="landModal-footer">
+			<!-- 상황에 따라 취소 버튼, 통행료 지불 문구 등 표시ㅣ -->
+			</div>
+		</div><!-- 내용 끝 -->
+	</div><!-- 알림 창 구성 끝 -->
+</div> <!-- 건물 알림창 끝 -->
+<button type="button" data-toggle="modal" data-target="#landConfirm">알림창 확인하기</button>
 <h5 style="text-align: center;">
 	주사위 값 : <input id="dice" type="text"> 이동 지점 : <input id="point" type="text">
 </h5>
