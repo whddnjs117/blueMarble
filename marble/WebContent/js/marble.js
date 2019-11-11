@@ -57,7 +57,7 @@ let player = {}; //버튼눌럿을때 나오는 플레이어를 저장할 객체
 let playerMembers = 0; //사람수를 선택할수있는 플레이어
 //------------------------------------------------------------------------------맵 데이터
 let MapData = [
-	{type : null , title : null},
+	{type : null , title : null}, //인덱스가 0인것은 존재하면 안되므로 null로 처리한다.
 	{type : "money" , title : "사회복지"},
 	{type : "city" , title : "부에노스", owner : null},
 	{type : "chance", title : "황금열쇠"},
@@ -95,6 +95,7 @@ let MapData = [
 	{type : "city" , title : "스톡홀름", owner : null},
 	{type : "island" , title : "여객기"},
 	{type : "city" , title : "베른", owner : null},
+	{type : "chance" , title : "황금열쇠"},
 	{type : "city" , title : "베를린", owner : null},
 	{type : "city" , title : "오타와", owner : null}
 ];
@@ -119,16 +120,17 @@ window.addEventListener("load",function() {
 		}else{
 			playCount=1;
 		}
-		let dice3 = Math.floor((Math.random() * 3) + 1);
-		let dice1 = 2;
+		let dice1 = Math.floor((Math.random() * 3) + 1);
+//		let dice1 = 2;
 		$("#onedice").attr("src","/marble/dice/dice"+dice1+".jpg")
-		let dice4 = Math.floor((Math.random() * 3) + 1);
-		let dice2 = 2;
+		let dice2 = Math.floor((Math.random() * 3) + 1);
+//		let dice2 = 2;
 		$("#twodice").attr("src","/marble/dice/dice"+dice2+".jpg")
 		$("#onedice").show();
 		$("#twodice").show();
 		let ran = dice1 + dice2;
-		document.querySelector("#dice").value = ran;
+		document.querySelector("#dice1").value = dice1;
+		document.querySelector("#dice2").value = dice2;
 		
 		if (player.beforePoint + ran < 41) {
 			player.afterPoint = player.beforePoint + ran;
@@ -159,12 +161,17 @@ window.addEventListener("load",function() {
 		} else{
 			player.playTurn = 0;
 		}
-		MovePlayer();
+		MovePlayer(); //말이동
 		
 		if(MapData[player.afterPoint].type == "city"){ //말을 이동시키고 나서 도착한 위치가 도시일경우
+			$("#landModal-footer").empty();
 			console.log("도시도착함")
 			MapData[player.afterPoint].owner = player.player;
 			console.log(MapData[player.afterPoint]);
+//			$("#landConfirm").modal({backdrop: 'static'});
+			
+			// 턴넘기는 버튼을 추가
+			$("#landModal-footer").append("<button type='button' class='btn btn-block btn-danger' data-dismiss='modal' style='font-style: italic;'>아무것도 안할래요.(내 차례 넘기기) </button>");
 		}
 		
 		
