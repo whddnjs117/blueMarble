@@ -12,7 +12,7 @@ let player1 = {
 		afterId : "#p21",
 		playerImg : "player1.png", //이미지이름
 		player : "player1", //html 클래스값
-		money : 3000000,
+		money : 300,
 		playTurn : 0, // 더블을 3턴하면 무인도로이동
 		nowPoint : 21
 }
@@ -23,7 +23,7 @@ let player2 = {
 		afterId : "#p21",
 		playerImg : "player2.png",
 		player : "player2",
-		money : 3000000,
+		money : 300,
 		playTurn : 0,
 		nowPoint : 21
 }
@@ -35,7 +35,7 @@ let player3 = {
 		afterId : "#p21",
 		playerImg : "player3.png",
 		player : "player3",
-		money : 3000000,
+		money : 300,
 		playTurn : 0,
 		nowPoint : 21
 }
@@ -47,7 +47,7 @@ let player4 = {
 		afterId : "#p21",
 		playerImg : "player4.png",
 		player : "player4",
-		money : 3000000,
+		money : 300,
 		playTurn : 0,
 		nowPoint : 21
 }
@@ -59,45 +59,45 @@ let playerMembers = 0; //사람수를 선택할수있는 플레이어
 let MapData = [
 	{type : null , title : null}, //인덱스가 0인것은 존재하면 안되므로 null로 처리한다.
 	{type : "money" , title : "사회복지"},
-	{type : "city" , title : "부에노스", owner : null},
+	{type : "city" , title : "부에노스", owner : null, landPrice:22,house1Price:15},
 	{type : "chance", title : "황금열쇠"},
-	{type : "city" , title : "상파울루", owner : null},
-	{type : "city" , title : "시드니", owner : null},
-	{type : "island" , title : "부산", owner : null},
-	{type : "city" , title : "하와이", owner : null},
-	{type : "city" , title : "리스본", owner : null},
-	{type : "island" , title : "엘리자베스", owner : null},
-	{type : "city" , title : "마드리드", owner : null},
+	{type : "city" , title : "상파울루", owner : null, landPrice:24,house1Price:15},
+	{type : "city" , title : "시드니", owner : null, landPrice:24,house1Price:15},
+	{type : "island" , title : "부산", owner : null, landPrice:50},
+	{type : "city" , title : "하와이", owner : null , landPrice:26,house1Price:15},
+	{type : "city" , title : "리스본", owner : null, landPrice:26,house1Price:15},
+	{type : "island" , title : "엘리자베스", owner : null, landPrice:30},
+	{type : "city" , title : "마드리드", owner : null, landPrice:28,house1Price:15},
 	{type : "space" , title : "우주여행"},
-	{type : "city" , title : "도쿄", owner : null},
-	{type : "island" , title : "컬럼비아호", owner : null},
-	{type : "city" , title : "파리", owner : null},
-	{type : "city" , title : "로마", owner : null},
+	{type : "city" , title : "도쿄", owner : null, landPrice:30,house1Price:20},
+	{type : "island" , title : "컬럼비아호", owner : null, landPrice:45},
+	{type : "city" , title : "파리", owner : null, landPrice:32,house1Price:20},
+	{type : "city" , title : "로마", owner : null, landPrice:32,house1Price:20},
 	{type : "chance" , title : "황금열쇠"},
-	{type : "city" , title : "런던", owner : null},
-	{type : "city" , title : "뉴욕", owner : null},
+	{type : "city" , title : "런던", owner : null, landPrice:35,house1Price:20},
+	{type : "city" , title : "뉴욕", owner : null, landPrice:35,house1Price:20},
 	{type : "pay" , title : "기부"},
-	{type : "island" , title : "서울", owner : null},
+	{type : "island" , title : "서울", owner : null, landPrice:100},
 	{type : "home" , title : "출발지"},
-	{type : "city" , title : "타이베이", owner : null},
+	{type : "city" , title : "타이베이", owner : null, landPrice:5,house1Price:5},
 	{type : "chance" , title : "황금열쇠"},
-	{type : "city" , title : "베이징", owner : null},
-	{type : "city" , title : "마닐라", owner : null},
-	{type : "island" , title : "제주", owner : null},
-	{type : "city" , title : "싱가포르", owner : null},
+	{type : "city" , title : "베이징", owner : null, landPrice:8,house1Price:5},
+	{type : "city" , title : "마닐라", owner : null, landPrice:8,house1Price:5},
+	{type : "island" , title : "제주", owner : null, landPrice:2},
+	{type : "city" , title : "싱가포르", owner : null, landPrice:10,house1Price:5},
 	{type : "chance" , title : "황금열쇠"},
-	{type : "city" , title : "카이로", owner : null},
-	{type : "city" , title : "이스탄불", owner : null},
+	{type : "city" , title : "카이로", owner : null, landPrice:10,house1Price:5},
+	{type : "city" , title : "이스탄불", owner : null, landPrice:12,house1Price:5},
 	{type : "desert_island" , title : "무인도"},
-	{type : "city" , title : "아테네", owner : null},
+	{type : "city" , title : "아테네", owner : null, landPrice:14,house1Price:10},
 	{type : "chance" , title : "황금열쇠"},
-	{type : "city" , title : "코펜하겐", owner : null},
-	{type : "city" , title : "스톡홀름", owner : null},
-	{type : "island" , title : "여객기"},
-	{type : "city" , title : "베른", owner : null},
+	{type : "city" , title : "코펜하겐", owner : null, landPrice:16,house1Price:10},
+	{type : "city" , title : "스톡홀름", owner : null, landPrice:16,house1Price:10},
+	{type : "island" , title : "여객기", owner : null, landPrice:20},
+	{type : "city" , title : "베른", owner : null, landPrice:18,house1Price:10},
 	{type : "chance" , title : "황금열쇠"},
-	{type : "city" , title : "베를린", owner : null},
-	{type : "city" , title : "오타와", owner : null}
+	{type : "city" , title : "베를린", owner : null, landPrice:18,house1Price:10},
+	{type : "city" , title : "오타와", owner : null, landPrice:20,house1Price:10}
 ];
 //--------------------------------------------------------------맵데이터 끝
 window.addEventListener("load",function() {
@@ -163,12 +163,13 @@ window.addEventListener("load",function() {
 		}
 		MovePlayer(); //말이동
 		
+		
 		if(MapData[player.afterPoint].type == "city"){ //말을 이동시키고 나서 도착한 위치가 도시일경우
 			$("#landModal-footer").empty();
 			console.log("도시도착함")
-			MapData[player.afterPoint].owner = player.player;
-			console.log(MapData[player.afterPoint]);
-//			$("#landConfirm").modal({backdrop: 'static'});
+			console.log(MapData[player.afterPoint].title);
+			InsertLandInfo(player.nowPoint); //알림창에 값 채우도록반응
+//			$("#landConfirm").modal({backdrop: 'static'}); //창 반응하게하기
 			
 			// 턴넘기는 버튼을 추가
 			$("#landModal-footer").append("<button type='button' class='btn btn-block btn-danger' data-dismiss='modal' style='font-style: italic;'>아무것도 안할래요.(내 차례 넘기기) </button>");
@@ -231,5 +232,24 @@ window.addEventListener("load",function() {
 		$(player.afterId).append("<input type='image' src='/marble/image/"+player.playerImg+"' class='player "+player.player+"'>");
 		player.beforePoint = player.afterPoint;
 		player.nowPoint = player.beforePoint;
+	}
+	
+	function InsertLandInfo(nowPoint) { // 모달 알림창에 값 채우기
+		
+		// 글자 비우기
+		$("#landName").empty();
+		$("#landPrice").empty();
+		$("#house1Price").empty();
+		$("#house2Price").empty();
+		$("#buildingPrice").empty();
+		$("#hotelPrice").empty();
+		$("#remainMoney").empty();
+		$("#landModal-footer").empty();
+		
+		//글자 채우기
+		$("#landName").text(MapData[nowPoint].title);
+		$("#landPrice").text(MapData[nowPoint].landPrice);
+		$("#house1Price").text(MapData[nowPoint].house1Price);
+		$("#remainMoney").text(player.money);
 	}
 });
